@@ -1,12 +1,21 @@
 class StopWatch {
-  elapsedTime = 0;
+  elapsedTimeInSeconds = 0;
+  intervalId = null;
 
-  start() {}
+  start() {
+    this.intervalId = setInterval(() => {
+      this.elapsedTimeInSeconds++;
+    }, 1000);
+  }
 
-  stop() {}
+  stop() {
+    clearInterval(this.intervalId);
+  }
 
-  reset() {}
+  reset() {
+    this.elapsedTimeInSeconds = 0;
+  }
 }
 
 const sw1 = new StopWatch();
-console.log(sw1);
+sw1.start();
